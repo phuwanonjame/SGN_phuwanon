@@ -3,7 +3,7 @@ const multer = require('multer')
 const path = require('path')
 const { handleUpload } = require('../controllers/uploadController')
 const { verifyToken } = require('../middleware/authMiddleware')  // สมมติว่ามี middleware นี้
-
+const { checkfilesize } = require('../validation/filevalidation')
 const router = express.Router()
 
 const upload = multer({
@@ -13,6 +13,6 @@ const upload = multer({
   })
 })
 
-router.post('/', verifyToken, upload.single('file'), handleUpload)
+router.post('/', verifyToken,checkfilesize, upload.single('file'), handleUpload)
 
 module.exports = router
