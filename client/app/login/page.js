@@ -13,9 +13,9 @@ export default function LoginPage() {
     console.log("login", response); 
 
     if (response.success === true) {
-      console.log("dashboard");
       
-      router.push("/dashboard");
+      
+      router.push("/home");
     } else {
       alert("Invalid credentials");
     }
